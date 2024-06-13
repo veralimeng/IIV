@@ -17,7 +17,7 @@ services:
         handler: index.handler
         memorySize: 512
         timeout: 300
-        codeUri: "https://github.com/Vera-lm/IIV/archive/refs/heads/main.zip"
+        codeUri: "https://github.com/veralimeng/IIV/archive/refs/heads/main.zip"
         environmentVariables:
           ENV_VAR: "value"
 
