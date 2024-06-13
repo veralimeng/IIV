@@ -1,7 +1,7 @@
 import requests
 
 def handler(event, context):
-    url = "https://raw.githubusercontent.com/Vera-lm/IIV/main/code.py"
+    url = "https://raw.githubusercontent.com/veralimeng/IIV/main/code.py"
     
     response = requests.get(url)
     with open("/tmp/code.py", "w") as f:
