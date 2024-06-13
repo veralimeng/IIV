@@ -8,26 +8,27 @@ def handler(event, context):
     extract_path = "/tmp/main"
 
     try:
-        # 下载 ZIP 文件
+        print(f"Starting download from {zip_url}")
         response = requests.get(zip_url)
         response.raise_for_status()
         with open(zip_path, "wb") as f:
             f.write(response.content)
-        print("ZIP file downloaded successfully.")
+        print(f"ZIP file downloaded successfully to {zip_path}")
 
-        # 解压 ZIP 文件
         with zipfile.ZipFile(zip_path, "r") as zip_ref:
             zip_ref.extractall(extract_path)
-        print("ZIP file extracted successfully.")
+        print(f"ZIP file extracted successfully to {extract_path}")
 
-        # 确定解压后文件路径
         code_file_path = os.path.join(extract_path, "IIV-main", "code.py")
         print(f"Code file path: {code_file_path}")
 
-        # 执行解压后的 code.py 文件
-        exec(open(code_file_path).read())
-        print("Code file executed successfully.")
-        
+        if os.path.exists(code_file_path):
+            print("Executing code.py")
+            exec(open(code_file_path).read())
+            print("Code executed successfully.")
+        else:
+            raise FileNotFoundError(f"code.py not found at {code_file_path}")
+
         return {
             "statusCode": 200,
             "body": "code.py executed and run successfully"
@@ -41,6 +42,13 @@ def handler(event, context):
         }
     except zipfile.BadZipFile as e:
         error_message = f"Failed to unzip the file: {e}"
+        print(error_message)
+        return {
+            "statusCode": 500,
+            "body": error_message
+        }
+    except FileNotFoundError as e:
+        error_message = f"File not found: {e}"
         print(error_message)
         return {
             "statusCode": 500,
