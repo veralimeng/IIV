@@ -1,0 +1,34 @@
+edition: 1.0.0
+
+services:
+  my-service:
+    component: "devsapp/fc"
+    description: "Service for running code.py from GitHub"
+    internetAccess: true
+
+    props:
+      region: "cn-hangzhou"
+      service:
+        name: "my-service"
+      function:
+        name: "my-function"
+        description: "Function to run code.py from GitHub"
+        runtime: python3
+        handler: index.handler
+        memorySize: 512
+        timeout: 300
+        codeUri: "https://github.com/Vera-lm/IIV/archive/refs/heads/main.zip"
+        environmentVariables:
+          ENV_VAR: "value"
+
+        events:
+          - httpTrigger:
+              method: GET
+              path: /run-code
+
+triggers:
+  httpTrigger:
+    type: http
+    config:
+      authType: anonymous
+      methods: ["GET"]
