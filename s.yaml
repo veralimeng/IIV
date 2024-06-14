@@ -17,7 +17,7 @@ services:
         handler: index.handler
         memorySize: 512
         timeout: 300
-        codeUri: "./"
+        codeUri: "./"  # 使用相对路径指向当前目录
         environmentVariables:
           ENV_VAR: "value"
         layers:
