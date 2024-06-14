@@ -1,6 +1,4 @@
 requests
-sys
-time
 pandas
 numpy
 networkx
