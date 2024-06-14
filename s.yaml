@@ -13,7 +13,7 @@ services:
       function:
         name: "my-function"
         description: "Function to run code.py from GitHub"
-        runtime: python3
+        runtime: python3.6
         handler: index.handler
         memorySize: 512
         timeout: 300
