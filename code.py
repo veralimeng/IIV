@@ -27,6 +27,8 @@ from joblib import Parallel, delayed
 from numba import njit
 import numpy as np
 
+print("开始加载数据...")
+
 # 假设 zip_file_path 是你的ZIP文件的路径
 zip_file_path = 'https://github.com/veralimeng/IIV/blob/main/funding_twitter_df_copy2.csv.zip'
 csv_file_name = 'funding_twitter_df_copy2.csv'
@@ -37,7 +39,8 @@ with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
     with zip_ref.open(csv_file_name) as csv_file:
         # 使用Pandas读取CSV文件
         funding_twitter_df_copy2 = pd.read_csv(csv_file)
-
+        
+print("数据加载完成")
 
 def ols_reg(funding_twitter_iiv_avg_df):
     # Set the multi-index for panel data
@@ -246,7 +249,7 @@ def apply_IIV_functions(df, n_jobs=100):
 
 
 
-# In[34]:
+
 
 
 funding_twitter_reg_df = funding_twitter_df_copy2.copy()
@@ -266,6 +269,9 @@ def convert_to_set(x):
 funding_twitter_reg_df['all_investor_names'] = funding_twitter_reg_df['all_investor_names'].apply(convert_to_set)
 funding_twitter_reg_df['funding_round_types'] = funding_twitter_reg_df['funding_round_types'].apply(convert_to_set)
 funding_twitter_reg_df['category_group_list'] = funding_twitter_reg_df['category_group_list'].apply(convert_to_set)
+
+
+print('Prepare to calculate IIV.')
 
 # Find the IIV1 and IIV2
 funding_twitter_iiv_df = apply_IIV_functions(funding_twitter_reg_df)
