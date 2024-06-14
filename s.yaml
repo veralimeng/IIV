@@ -5,9 +5,6 @@ services:
     component: "devsapp/fc"
     description: "Service for running code.py from GitHub"
     internetAccess: true
-    logConfig:
-      project: "my-log-project"
-      logstore: "my-log-store"
 
     props:
       region: "cn-hangzhou"
@@ -19,8 +16,8 @@ services:
         runtime: python3
         handler: index.handler
         memorySize: 512
-        timeout: 86400
-        codeUri: "https://github.com/veralimeng/IIV/archive/refs/heads/main.zip"
+        timeout: 300
+        codeUri: "./"  # 使用相对路径指向当前目录
         environmentVariables:
           ENV_VAR: "value"
 
