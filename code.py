@@ -5,7 +5,7 @@ import requests
 print("开始加载数据...")
 
 # 假设 zip_file_path 是你的ZIP文件的路径
-zip_file_path = '/tmp/funding_twitter_df_copy2.csv.zip'
+zip_file_path = 'https://github.com/veralimeng/IIV/blob/main/funding_twitter_df_copy2.csv.zip'
 csv_file_name = 'funding_twitter_df_copy2.csv'
 
 # 打开ZIP文件
