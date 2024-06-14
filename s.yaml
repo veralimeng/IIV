@@ -17,14 +17,16 @@ services:
         handler: index.handler
         memorySize: 512
         timeout: 300
-        codeUri: "./"  # 使用相对路径指向当前目录
+        codeUri: "./"
         environmentVariables:
           ENV_VAR: "value"
+        layers:
+          - arn:acs:fc:cn-hangzhou:123456789012:layers/layer1/1  # 替换为实际的 ARN
 
-        events:
-          - httpTrigger:
-              method: GET
-              path: /run-code
+      events:
+        - httpTrigger:
+            method: GET
+            path: /run-code
 
 triggers:
   httpTrigger:
