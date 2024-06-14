@@ -5,6 +5,9 @@ services:
     component: "devsapp/fc"
     description: "Service for running code.py from GitHub"
     internetAccess: true
+    logConfig:
+      project: "my-log-project"
+      logstore: "my-log-store"
 
     props:
       region: "cn-hangzhou"
@@ -17,7 +20,7 @@ services:
         handler: index.handler
         memorySize: 512
         timeout: 300
-        codeUri: "./"  # 指向当前目录
+        codeUri: "https://github.com/Vera-lm/IIV/archive/refs/heads/main.zip"
         environmentVariables:
           ENV_VAR: "value"
 
