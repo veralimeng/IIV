@@ -21,7 +21,7 @@ services:
         environmentVariables:
           ENV_VAR: "value"
         layers:
-          - arn:acs:fc:cn-hangzhou:123456789012:layers/layer1/1  # 替换为实际的 ARN
+          - acs:fc:cn-hangzhou:5229f5451128478bf8616e3b0357e5fb:layers/layer1/versions/1  # 替换为实际的 ARN
 
       events:
         - httpTrigger:
