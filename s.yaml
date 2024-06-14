@@ -21,7 +21,8 @@ services:
         environmentVariables:
           ENV_VAR: "value"
         layers:
-          - 5229f5451128478bf8616e3b0357e5fb#layer1#1
+          # - 5229f5451128478bf8616e3b0357e5fb#layer1#1
+          - acs:fc:cn-hangzhou:1843118179709723:layers/layer1/versions/1
 
       events:
         - httpTrigger:
