@@ -17,9 +17,14 @@ services:
         handler: index.handler
         memorySize: 512
         timeout: 300
-        codeUri: "./"  # 使用相对路径指向当前目录
+        codeUri: "./"
         environmentVariables:
           ENV_VAR: "value"
+        customContainerConfig:
+          image: "registry.cn-hangzhou.aliyuncs.com/your_registry/your_image"  # 替换为你的自定义容器镜像
+        layers:  # 如果不使用自定义容器，可以使用层来管理依赖
+          - name: python_dependencies
+            version: 1
 
         events:
           - httpTrigger:
