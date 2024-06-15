@@ -28,21 +28,30 @@ from tqdm import tqdm
 from joblib import Parallel, delayed
 from numba import njit
 import numpy as np
+import requests
+import os
 
-print("开始加载数据...")
-
-# 假设 zip_file_path 是你的ZIP文件的路径
-zip_file_path = "https://github.com/veralimeng/IIV/raw/main/funding_twitter_df_copy2.csv.zip"
+# 假设 zip_file_url 是你的ZIP文件的URL
+zip_file_url = "https://github.com/veralimeng/IIV/raw/main/funding_twitter_df_copy2.csv.zip"
 csv_file_name = "funding_twitter_df_copy2.csv"
+local_zip_path = "/tmp/funding_twitter_df_copy2.csv.zip"
+
+# 下载ZIP文件到本地
+response = requests.get(zip_file_url)
+with open(local_zip_path, 'wb') as f:
+    f.write(response.content)
+
+print("ZIP文件下载完成")
 
 # 打开ZIP文件
-with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+with zipfile.ZipFile(local_zip_path, 'r') as zip_ref:
     # 解压特定的CSV文件到内存
     with zip_ref.open(csv_file_name) as csv_file:
         # 使用Pandas读取CSV文件
         funding_twitter_df_copy2 = pd.read_csv(csv_file)
         
 print("数据加载完成")
+
 
 def ols_reg(funding_twitter_iiv_avg_df):
     # Set the multi-index for panel data
