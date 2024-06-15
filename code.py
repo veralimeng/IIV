@@ -184,7 +184,7 @@ def iv_2sls_reg(funding_twitter_iiv_avg_df, IIV = 'IIV1_TE'):
     return X, y, W, funding_twitter_reg_df
 
 
-# In[14]:
+print('Function iv_2sls_reg 加载完成')
 
 
 # Define the function to calculate the average Twitter Engagement for a given year and IIV list
@@ -259,7 +259,7 @@ def apply_IIV_functions(df, n_jobs=100):
     return new_df
 
 
-
+print('Function apply_IIV_functions 加载完成')
 
 
 
@@ -271,6 +271,7 @@ funding_twitter_reg_df = funding_twitter_reg_df[['announced_on_year', 'company_n
                                                  'Twitter_name', 'employee_count', 'user_id', 'Twitter_engagement', 
                                                  'log_lead_funding', 'age', 'has_Twitter', 'market', 'age_year']]
 
+print('数据funding_twitter_reg_df已复制')
 
 def convert_to_set(x):
     if isinstance(x, list):
@@ -288,9 +289,6 @@ print('Prepare to calculate IIV.')
 funding_twitter_iiv_df = apply_IIV_functions(funding_twitter_reg_df)
 
 
-# In[35]:
-
-
 # Create a copy of the original DataFrame
 funding_twitter_iiv_avg_df = funding_twitter_iiv_df.copy()
 
@@ -299,9 +297,6 @@ funding_twitter_iiv_avg_df = add_iiv_avg_twitter_engagement(funding_twitter_iiv_
 print('IIV1 finish')
 funding_twitter_iiv_avg_df = add_iiv_avg_twitter_engagement(funding_twitter_iiv_avg_df, 'IIV2', 'IIV2_TE')
 print('IIV2 finish')
-
-
-# In[36]:
 
 
 print('OLS+FE model summary', ols_reg(funding_twitter_iiv_avg_df))
