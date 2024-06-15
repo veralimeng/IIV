@@ -8,7 +8,7 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 import random
 import time
-from twitter.scraper import Scraper
+# from twitter.scraper import Scraper
 from typing import List, Any
 import pyarrow
 import os
