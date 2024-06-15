@@ -97,7 +97,7 @@ def ols_reg(funding_twitter_iiv_avg_df):
     return model
 
 
-# In[13]:
+print('Function ols_reg 加载完成')
 
 
 def iv_2sls_reg(funding_twitter_iiv_avg_df, IIV = 'IIV1_TE'):
