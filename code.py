@@ -23,13 +23,10 @@ from tqdm import tqdm
 
 print('test 3')
 import zipfile
-import pandas as pd
-from tqdm import tqdm
 from joblib import Parallel, delayed
 from numba import njit
-import numpy as np
 import requests
-import os
+
 
 # 假设 zip_file_url 是你的ZIP文件的URL
 zip_file_url = "https://github.com/veralimeng/IIV/raw/main/funding_twitter_df_copy2.csv.zip"
