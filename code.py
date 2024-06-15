@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler
 import random
 import time
 # from twitter.scraper import Scraper
+print('test 1')
 from typing import List, Any
 import pyarrow
 import os
@@ -16,10 +17,11 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 from statsmodels.sandbox.regression.gmm import IV2SLS
 from linearmodels.panel import PanelOLS
+print('test 2')
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from tqdm import tqdm
 
-
+print('test 3')
 import zipfile
 import pandas as pd
 from tqdm import tqdm
